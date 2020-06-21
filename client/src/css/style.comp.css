@@ -1,0 +1,646 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+/* We convert everything to be rem for ease of editing and scalability.  This rule:
+```
+html {
+    font-size: 62.5%;
+}
+```
+is the base, off which our rem is calculated.  Originally he showed it as setting it as 10px (for ease of calculation).  But because some people want to change the default size of browser font, we dont want to use this method -- it will overwrite what they set.
+
+Therefore: every browser can be assumed to be base of 16px font.  10px is 62.5% of 16.  So if they alter their default value to 24 or 30 or whatever, our calculations are now off of what they have set it to be.   */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  box-sizing: border-box;
+  line-height: 1.6;
+  font-size: 2rem; }
+
+.active {
+  color: orange;
+  text-decoration: none; }
+  .active:hover {
+    text-decoration: underline; }
+
+.navlink {
+  color: white;
+  text-decoration: none; }
+  .navlink:hover {
+    text-decoration: underline; }
+
+.Header {
+  width: 100%;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #3F7CAC;
+  height: 7vh; }
+  .Header__nav {
+    align-items: center;
+    list-style: none;
+    display: grid;
+    z-index: 1000;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 2rem; }
+    .Header__nav__item__sublist {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); }
+      .Header__nav__item__sublist__item__icon {
+        width: 2rem;
+        height: 2rem;
+        fill: #E2F89C;
+        transition: all .4s; }
+        .Header__nav__item__sublist__item__icon:hover {
+          fill: #E2F89C;
+          transform: scale(2); }
+    .Header__nav__item__link:link, .Header__nav__item__link:visited {
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      color: #E2F89C;
+      font-size: 1.6rem;
+      font-weight: 400;
+      height: 7vh;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      transition: all .2s; }
+    .Header__nav__item__link--mobile {
+      padding-left: 1rem; }
+    .Header__nav__item__link:hover, .Header__nav__item__link:active {
+      background-color: #E2F89C;
+      color: #3F7CAC; }
+    @media only screen and (max-width: 43.75em) {
+      .Header__nav__item--full {
+        display: none; } }
+    .Header__nav__item--mobile {
+      display: none; }
+      @media only screen and (max-width: 43.75em) {
+        .Header__nav__item--mobile {
+          display: grid;
+          align-items: center;
+          justify-content: center;
+          justify-self: start;
+          padding-left: 2rem;
+          text-align: center;
+          cursor: pointer;
+          height: 100%;
+          margin-top: 1.5rem; } }
+    .Header__nav__item__icon {
+      display: none;
+      position: relative; }
+      .Header__nav__item__icon, .Header__nav__item__icon::before, .Header__nav__item__icon::after {
+        width: 3rem;
+        height: 2px;
+        background-color: #fff; }
+        @media only screen and (max-width: 43.75em) {
+          .Header__nav__item__icon, .Header__nav__item__icon::before, .Header__nav__item__icon::after {
+            display: inline-block;
+            align-items: center;
+            justify-content: center;
+            justify-self: start; } }
+      .Header__nav__item__icon::before, .Header__nav__item__icon::after {
+        content: "";
+        position: absolute;
+        left: 0; }
+      .Header__nav__item__icon::before {
+        top: -1rem; }
+      .Header__nav__item__icon::after {
+        top: 1rem; }
+
+.SignOutButton {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  color: #E2F89C;
+  font-size: 1.6rem;
+  font-weight: 400;
+  height: 7vh;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer; }
+  .SignOutButton:hover, .SignOutButton:active {
+    background-color: #E2F89C;
+    color: #3F7CAC; }
+
+.CustomButton {
+  padding: 2rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  line-height: 5rem;
+  min-width: 16.5rem;
+  width: auto;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #962929; }
+  .CustomButton__text {
+    width: 90%;
+    text-align: start; }
+  .CustomButton--SignInPage {
+    background-color: #962929;
+    color: #bdc4a7;
+    align-self: center;
+    margin-bottom: 2rem; }
+    .CustomButton--SignInPage:hover {
+      background-color: #bdc4a7;
+      color: #962929; }
+  .CustomButton--socialSignIns {
+    padding: 2rem;
+    width: 27.5rem;
+    margin-bottom: 2rem;
+    justify-content: space-between; }
+    @media only screen and (max-width: 50em) {
+      .CustomButton--socialSignIns {
+        font-size: 1.5rem; } }
+
+.ShelfSignOutButton {
+  text-decoration: none;
+  color: #3F7CAC;
+  font-weight: 700;
+  cursor: pointer; }
+
+.backdrop {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 500;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.visible {
+  display: grid; }
+
+.CustomIcon {
+  width: 3rem;
+  margin-right: 2rem;
+  height: 3rem; }
+
+.Message {
+  font-size: 1.5rem; }
+
+.Shelf {
+  background-color: #bdc4a7;
+  width: 0;
+  height: 100%;
+  position: fixed;
+  z-index: 750;
+  left: 0;
+  top: 0;
+  display: grid;
+  transition: all .4s; }
+  .Shelf ul {
+    margin-left: 0; }
+    .Shelf ul li {
+      margin-left: 0; }
+  .Shelf__list {
+    display: grid;
+    z-index: 850;
+    position: relative;
+    top: 15%;
+    left: -100%;
+    list-style: none;
+    color: #3F7CAC;
+    transition: all .6s;
+    align-self: start;
+    justify-self: start; }
+    .Shelf__list__item {
+      padding: 2rem;
+      width: 100%; }
+      .Shelf__list__item__sublist {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2rem; }
+        .Shelf__list__item__sublist__item__icon {
+          width: 2rem;
+          height: 2rem;
+          fill: #3F7CAC;
+          transition: all .4s; }
+          .Shelf__list__item__sublist__item__icon:hover {
+            fill: #3F7CAC;
+            transform: scale(2); }
+      .Shelf__list__item__link {
+        text-decoration: none;
+        color: #3F7CAC;
+        font-weight: 700;
+        cursor: pointer; }
+      .Shelf__list__item:hover {
+        background-color: #3F7CAC; }
+      .Shelf__list__item:hover > .Shelf__list__item__link {
+        color: #bdc4a7; }
+      .Shelf__list__item:hover > .ShelfSignOutButton {
+        color: #bdc4a7; }
+
+.shelfVisible {
+  width: 66%; }
+  .shelfVisible .Shelf__list {
+    top: 15%;
+    left: 33%; }
+
+.FullApp {
+  background-color: #95afba;
+  min-height: 100vh; }
+
+.Homepage {
+  height: 300vh; }
+
+.SignInPage {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 3rem;
+  color: #962929; }
+  .SignInPage__title {
+    text-align: center; }
+  .SignInPage__socialBox {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center; }
+  .SignInPage__input {
+    background: none;
+    background-color: white;
+    color: #962929;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 90%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #962929;
+    margin: 25px 0;
+    align-self: center; }
+  .SignInPage__form {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%; }
+  .SignInPage__error-blurb {
+    text-align: center;
+    align-self: center;
+    padding: 2.5rem;
+    line-height: 2; }
+  .SignInPage__password-forget {
+    text-transform: uppercase;
+    padding: 2rem; }
+    .SignInPage__password-forget a {
+      color: #962929;
+      letter-spacing: 1px; }
+  .SignInPage__sign-up {
+    padding: 2rem;
+    text-align: center; }
+    .SignInPage__sign-up a {
+      text-transform: uppercase;
+      color: #962929;
+      letter-spacing: 1px; }
+
+.Landing {
+  text-align: center;
+  color: #962929; }
+  .Landing__title {
+    margin-top: 2rem; }
+  .Landing__blurb {
+    margin-top: 2rem;
+    padding: 3rem; }
+
+.GamesPage {
+  display: flex;
+  flex-flow: column wrap; }
+  .GamesPage .CustomButton {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 33%;
+    align-self: center; }
+    @media only screen and (max-width: 43.75em) {
+      .GamesPage .CustomButton {
+        font-size: 1.25rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .GamesPage .CustomButton {
+        width: 66%; } }
+  .GamesPage__main {
+    width: 100%;
+    text-align: center; }
+    .GamesPage__main__title {
+      padding: 2rem;
+      text-transform: uppercase;
+      background-color: #962929;
+      color: #E2F89C; }
+    .GamesPage__main__list {
+      padding-top: 2rem;
+      list-style: none; }
+      .GamesPage__main__list__item {
+        padding: .5rem;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center; }
+        .GamesPage__main__list__item__link {
+          text-decoration: none;
+          margin-bottom: 1rem; }
+      .GamesPage__main__list .CustomButton {
+        width: 8%;
+        margin: 0;
+        padding: 0;
+        min-width: 4rem;
+        font-size: 1rem;
+        height: 3rem; }
+        @media only screen and (max-width: 37.5em) {
+          .GamesPage__main__list .CustomButton {
+            width: 15%; } }
+        @media only screen and (max-width: 31.25em) {
+          .GamesPage__main__list .CustomButton {
+            width: 20%; } }
+
+.GameRoom {
+  height: 93vh;
+  display: flex;
+  flex-flow: column wrap; }
+  .GameRoom__lobbyBox {
+    width: 90%;
+    align-self: center;
+    height: 17%;
+    display: flex;
+    flex-flow: row wrap;
+    border-bottom: 1px solid black;
+    background-color: white; }
+    .GameRoom__lobbyBox__title {
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem;
+      align-self: start;
+      display: flex;
+      text-transform: uppercase;
+      justify-content: space-around;
+      color: #E2F89C;
+      background-color: #3F7CAC;
+      flex: 1 0 auto; }
+      @media only screen and (max-width: 37.5em) {
+        .GameRoom__lobbyBox__title {
+          font-size: 1.5rem; } }
+      .GameRoom__lobbyBox__title a {
+        color: #E2F89C; }
+    .GameRoom__lobbyBox__playerList {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      flex: 2 0 auto; }
+      .GameRoom__lobbyBox__playerList__list {
+        width: 100%;
+        display: flex;
+        list-style: none;
+        flex-flow: row wrap; }
+        .GameRoom__lobbyBox__playerList__list__item {
+          padding: 1rem;
+          font-size: 1.25rem; }
+          @media only screen and (max-width: 37.5em) {
+            .GameRoom__lobbyBox__playerList__list__item {
+              font-size: 1rem; } }
+          @media only screen and (max-width: 31.25em) {
+            .GameRoom__lobbyBox__playerList__list__item {
+              padding: .5rem; } }
+  .GameRoom__gameBox {
+    color: #962929;
+    height: 50%; }
+    .GameRoom__gameBox--game-over {
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: center; }
+      .GameRoom__gameBox--game-over ul {
+        list-style: none;
+        padding: 2rem; }
+    .GameRoom__gameBox__prompt {
+      background-color: white;
+      text-transform: uppercase;
+      padding: 3rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-around; }
+    .GameRoom__gameBox__promptGuessInput {
+      width: 100%;
+      display: flex;
+      justify-content: space-around; }
+    .GameRoom__gameBox--wrongguess {
+      padding-top: 1rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: space-between;
+      justify-content: space-around; }
+      @media only screen and (max-width: 31.25em) {
+        .GameRoom__gameBox--wrongguess {
+          font-size: 1.5rem; } }
+    .GameRoom__gameBox--promptcard {
+      text-align: center;
+      overflow: hidden;
+      padding-top: 1rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: space-between;
+      justify-content: space-around; }
+      @media only screen and (max-width: 31.25em) {
+        .GameRoom__gameBox--promptcard {
+          font-size: 1.5rem; } }
+    .GameRoom__gameBox__wrongGuessCard {
+      width: 100%;
+      text-align: center; }
+    .GameRoom__gameBox__submissionsBox {
+      padding: 0.5rem 2rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: center;
+      justify-content: space-between;
+      flex: 2 0 auto; }
+      @media only screen and (max-width: 31.25em) {
+        .GameRoom__gameBox__submissionsBox {
+          font-size: 1.5rem; } }
+      .GameRoom__gameBox__submissionsBox__inputBox {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        flex: 1 0 auto;
+        align-items: center; }
+        .GameRoom__gameBox__submissionsBox__inputBox__input {
+          margin-right: 1rem; }
+      .GameRoom__gameBox__submissionsBox__submitForm {
+        align-self: center; }
+    .GameRoom__gameBox__subtitle {
+      text-align: center; }
+    .GameRoom__gameBox__list {
+      list-style: none; }
+      .GameRoom__gameBox__list--wrong-guesses {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 1rem; }
+      .GameRoom__gameBox__list--pregame {
+        width: 100%;
+        text-align: center; }
+      .GameRoom__gameBox__list--submission {
+        width: 100%;
+        text-align: center;
+        flex: 1 0 auto; }
+      .GameRoom__gameBox__list--submission-slips {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-flow: row wrap;
+        flex: 4 0 auto; }
+      .GameRoom__gameBox__list__item--pregame {
+        margin-bottom: 2rem; }
+      .GameRoom__gameBox__list__item--wrong-guess {
+        margin-right: 1rem; }
+      .GameRoom__gameBox__list__item--submission-slip {
+        display: flex;
+        border: 1px solid #962929;
+        background-color: white;
+        font-size: 1.5rem;
+        padding: .75rem;
+        justify-content: space-between;
+        align-self: center;
+        margin-right: 1rem; }
+        @media only screen and (max-width: 37.5em) {
+          .GameRoom__gameBox__list__item--submission-slip {
+            font-size: 1.25rem; } }
+        .GameRoom__gameBox__list__item--submission-slip__slip {
+          margin-right: 2rem; }
+      .GameRoom__gameBox__list__item--submission {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: .5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .GameRoom__gameBox__list__item {
+          font-size: 1.25rem; } }
+    .GameRoom__gameBox__button--pregame {
+      width: 10%;
+      padding: 0.5rem;
+      align-self: center; }
+      @media only screen and (max-width: 75em) {
+        .GameRoom__gameBox__button--pregame {
+          width: 15%; } }
+      @media only screen and (max-width: 50em) {
+        .GameRoom__gameBox__button--pregame {
+          width: 20%; } }
+      @media only screen and (max-width: 37.5em) {
+        .GameRoom__gameBox__button--pregame {
+          width: 25%; } }
+      @media only screen and (max-width: 31.25em) {
+        .GameRoom__gameBox__button--pregame {
+          width: 30%; } }
+    .GameRoom__gameBox__button--submission-slip {
+      margin-left: 1rem; }
+    .GameRoom__gameBox__button--wrongguess {
+      width: 50%;
+      align-self: center;
+      padding: 1rem; }
+    .GameRoom__gameBox--pregame {
+      padding: 2rem 4rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: center;
+      justify-content: center; }
+      @media only screen and (max-width: 31.25em) {
+        .GameRoom__gameBox--pregame {
+          font-size: 1.5rem; } }
+    .GameRoom__gameBox--submission {
+      padding-top: 1rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: space-between;
+      justify-content: space-between; }
+      @media only screen and (max-width: 31.25em) {
+        .GameRoom__gameBox--submission {
+          font-size: 1.5rem; } }
+      .GameRoom__gameBox--submission__info {
+        text-align: center;
+        padding-bottom: 1rem; }
+  .GameRoom__chatBox {
+    width: 90%;
+    height: 25%;
+    overflow: scroll;
+    align-self: center;
+    background-color: white; }
+    .GameRoom__chatBox ul li {
+      border-bottom: 1px solid black;
+      padding: 1rem; }
+  .GameRoom__chatInput {
+    width: 90%;
+    align-self: center;
+    height: 5%; }
+    .GameRoom__chatInput__input {
+      height: 80%;
+      width: 80%;
+      padding-left: 1rem; }
+    .GameRoom__chatInput__button {
+      height: 80%;
+      width: 20%; }
+
+.PlayerZero {
+  color: black; }
+
+.PlayerOne {
+  color: red; }
+
+.PlayerTwo {
+  color: blue; }
+
+.PlayerThree {
+  color: green; }
+
+.PlayerFour {
+  color: purple; }
+
+.PlayerFive {
+  color: darkgoldenrod; }
+
+.PlayerSix {
+  color: #d763d7; }
+
+.PlayerSeven {
+  color: #f80292; }
+
+.PlayerEight {
+  color: #0f5201; }
+
+.PlayerNine {
+  color: #939393; }
+
+.PlayerTen {
+  color: #7b72e6; }
+
+.PlayerEleven {
+  color: #6dbf01; }
+
+.PlayerTwelve {
+  color: #ca6200; }

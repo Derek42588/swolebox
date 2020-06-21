@@ -1,0 +1,12 @@
+.Landing {
+  text-align: center;
+  color: $color-senary;
+   &__title {
+    margin-top: 2rem;
+  }
+
+  &__blurb {
+      margin-top: 2rem;
+      padding: 3rem;
+  }
+}

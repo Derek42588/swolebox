@@ -1,0 +1,97 @@
+.Shelf {
+    background-color: $color-tertiary;
+    width: 0;
+    height: 100%;
+    position: fixed;
+    z-index: 750;
+    left: 0;
+    top: 0;
+    display: grid;
+    transition: all .4s;
+
+    ul {
+        margin-left: 0;
+        li {
+            margin-left: 0;
+        }
+    }
+
+    &__list {
+        display: grid;
+        z-index: 850;
+        position: relative;
+        top: 15%;
+        left: -100%;
+        list-style: none;
+        color: $color-primary;
+        transition: all .6s;
+        align-self: start;
+        justify-self: start;
+
+        &__item {
+            padding: 2rem;
+            width: 100%;
+
+            &__sublist {
+                list-style: none;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 2rem;
+                &__item {
+        
+                  &__icon {
+                    width: 2rem;
+                    height: 2rem;
+                    fill: $color-primary;
+                    transition: all .4s;
+                    &:hover {
+                      fill: $color-primary;
+                      transform: scale(2);
+                    }
+                  }
+                }
+              }
+        
+
+            &__link {
+                text-decoration: none;
+                color: $color-primary;
+                font-weight: 700;
+                cursor: pointer;
+
+            }
+
+  
+
+
+                &:hover {
+                    background-color: $color-primary;
+                    
+          
+                }
+
+            &:hover > &__link {
+                color: $color-tertiary;
+            }
+            &:hover > .ShelfSignOutButton {
+                color: $color-tertiary;
+            }
+
+    }
+}
+}
+
+.shelfVisible {
+    width: 66%;
+    // height: 100%;
+    // position: fixed;
+    // z-index: 750;
+    // left: 0;
+    // top: 0;
+    // display: grid;
+    .Shelf__list {
+        top: 15%;
+        left: 33%;
+    }
+}
+

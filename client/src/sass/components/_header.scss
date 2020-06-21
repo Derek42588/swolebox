@@ -1,0 +1,175 @@
+.active{
+    color: orange;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.navlink {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.Header {
+    width: 100%;
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: $color-primary;
+    height: 7vh;
+  
+  
+    &__nav {
+      align-items: center;
+      list-style: none;
+      display: grid;
+      z-index: 1000;
+  
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      grid-gap: 2rem;
+      
+  
+      &__item{
+  
+        &__sublist {
+          list-style: none;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          &__item {
+            // justify-self: center;
+            // align-self: center;
+  
+            &__icon {
+              width: 2rem;
+              height: 2rem;
+              fill: $color-quaternary;
+              transition: all .4s;
+              &:hover {
+                fill: $color-quaternary;
+                transform: scale(2);
+              }
+            }
+          }
+        }
+  
+          
+          &__link:link,
+          &__link:visited {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+          color: $color-quaternary;
+          font-size: 1.6rem;
+          font-weight: 400;
+          height: 7vh;
+          text-decoration: none;
+          
+          text-transform: uppercase;
+          text-align: center;
+          // display: block;
+          transition: all .2s;
+          
+  
+      }
+  
+      &__link--mobile{
+        padding-left: 1rem;
+      }
+  
+          
+      &__link:hover,
+      &__link:active {
+          background-color: $color-quaternary;
+          color: $color-primary;
+      }
+      
+      &--full {
+        @include respond(bpSmaller) {
+          display: none;
+        }
+  
+      }
+  
+      &--mobile {
+        display: none;
+        @include respond(bpSmaller) {
+          display: grid;
+          align-items: center;
+          justify-content: center;
+          justify-self: start;
+          padding-left: 2rem;
+          text-align: center;
+          cursor: pointer;
+          height: 100%;
+          margin-top: 1.5rem;
+          
+  
+        }
+  
+      }
+  
+      &__icon {
+        display: none;
+        position: relative;
+        
+        &,
+        &::before,
+        &::after {
+          width: 3rem;
+          height: 2px;
+          background-color: #fff;
+  
+          @include respond(bpSmaller) {
+            display: inline-block;
+            align-items: center;
+            justify-content: center;
+            justify-self: start;
+            
+    
+          }
+        }
+        &::before,
+        &::after {
+          content:"";
+          position: absolute;
+          left: 0;
+  
+        }
+  
+        &::before {
+          top: -1rem;
+        }
+  
+        &::after {
+          top: 1rem;
+        }
+      }
+  
+      }
+    }
+  }
+  
+  // .backdrop {
+  //   display: none;
+  //   width: 100%
+  //   height: 100%;
+  //   position: fixed;
+  //   z-index: 500;
+  //   left: 0;
+  //   top: 0;
+  //   background-color: rgba(0,0,0,0.5);
+  // }
+  
+  // .visible {
+  //   display: block;
+  // }
+  
+  

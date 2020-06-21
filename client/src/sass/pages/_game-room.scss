@@ -1,0 +1,334 @@
+.GameRoom {
+  height: 93vh;
+  display: flex;
+  flex-flow: column wrap;
+
+  // &__titleBox {
+  //   width: 100%;
+  //   height: 5%;
+  //   display: flex;
+  //   flex-flow: row wrap;
+
+  //   &__title {
+  //     text-align: center;
+  //     width: 100%;
+  //     display: flex;
+  //     align-content: center;
+  //     justify-content: center;
+
+  //     a {
+  //       align-self: center;
+  //     }
+  //   }
+  // }
+  &__lobbyBox {
+    width: 90%;
+    align-self: center;
+    height: 17%;
+    display: flex;
+    flex-flow: row wrap;
+    border-bottom: 1px solid black;
+    background-color: white;
+
+    &__title {
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem;
+      align-self: start;
+      display: flex;
+      text-transform: uppercase;
+      justify-content: space-around;
+      color: $color-quaternary;
+      background-color: $color-primary;
+      flex: 1 0 auto;
+
+      @include respond (phone) {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+      }
+
+      a {
+        color: $color-quaternary;
+      }
+    }
+
+    &__playerList {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+
+      flex: 2 0 auto;
+
+      &__list {
+        width: 100%;
+        display: flex;
+        list-style: none;
+        flex-flow: row wrap;
+
+        &__item {
+          padding: 1rem;
+          font-size: 1.25rem;
+
+          @include respond(phone) {
+              font-size: 1rem;
+          }
+          @include respond(micro) {
+              padding: .5rem;
+          }
+        }
+      }
+    }
+  }
+  &__gameBox {
+    color: $color-senary;
+    height: 50%;
+    
+    &--game-over {
+      display: flex;
+flex-flow: column wrap;
+align-items: center;
+justify-content: center;
+
+      ul {
+        list-style: none;
+        padding: 2rem;
+      }
+    }
+    &__prompt {
+      background-color: white;
+      text-transform: uppercase;
+      padding: 3rem;
+      width: 100%;
+display: flex;
+justify-content: space-around;
+    }
+
+    &__promptGuessInput {
+      width: 100%;
+display: flex;
+justify-content: space-around;
+    }
+    &--wrongguess {
+      padding-top: 1rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: space-between;
+      justify-content: space-around;
+      @include respond(micro) {
+        font-size: 1.5rem;
+      }
+
+    }
+    &--promptcard {
+      text-align: center;
+      overflow: hidden;
+      padding-top: 1rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: space-between;
+      justify-content: space-around;
+      @include respond(micro) {
+        font-size: 1.5rem;
+      }
+
+    }
+
+    &__wrongGuessCard {
+      width: 100%;
+      text-align: center;
+    }
+
+    &__submissionsBox {
+      padding: 0.5rem 2rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: center;
+      justify-content: space-between;
+      flex: 2 0 auto;
+      @include respond(micro) {
+        font-size: 1.5rem;
+      }
+
+      &__inputBox {
+width: 100%;
+display: flex;
+flex-flow: row wrap;
+justify-content: space-evenly;
+flex: 1 0 auto;
+align-items: center;
+        &__input {
+          margin-right: 1rem;
+        }
+      }
+
+      &__submitForm {
+        align-self: center;
+      }
+    }
+
+    &__subtitle {
+      text-align: center;
+    }
+    &__list {
+      list-style: none;
+
+      &--wrong-guesses{
+        display: flex;
+        flex-flow: row wrap;
+        padding: 1rem;
+      }
+
+      &--pregame {
+        width: 100%;
+        text-align: center;
+      }
+
+      &--submission {
+        width: 100%;
+        text-align: center;
+        flex: 1 0 auto;
+      }
+      &--submission-slips {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-flow: row wrap;
+flex: 4 0 auto;
+      }
+
+      &__item {
+        &--pregame {
+          margin-bottom: 2rem;
+        }
+        &--wrong-guess {
+          margin-right: 1rem;
+        }
+
+        &--submission-slip {
+          display: flex;
+          border: 1px solid $color-senary;
+          background-color: white;
+          font-size: 1.5rem;
+          padding: .75rem;
+          justify-content: space-between;
+          align-self: center;
+margin-right: 1rem;
+
+          @include respond(phone) {
+            font-size: 1.25rem;
+          }
+          &__slip {
+            margin-right: 2rem;
+          }
+        }
+
+        &--submission {
+          display: flex;
+          justify-content: space-evenly;
+          margin-bottom: .5rem;
+
+        
+        }
+        @include respond(phone) {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    &__button {
+      &--pregame {
+        width: 10%;
+        padding: 0.5rem;
+        align-self: center;
+
+        @include respond(tab-land) {
+          width: 15%;
+        }
+        @include respond(bpSmall) {
+          width: 20%;
+        }
+        @include respond(phone) {
+          width: 25%;
+        }
+        @include respond(micro) {
+          width: 30%;
+        }
+      }
+
+      &--submission-slip {
+        margin-left: 1rem;
+      }
+
+      &--wrongguess {
+        width: 50%;
+align-self: center;
+padding: 1rem;
+      }
+    }
+    &--pregame {
+      padding: 2rem 4rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: center;
+      justify-content: center;
+      @include respond(micro) {
+        font-size: 1.5rem;
+      }
+    }
+    &--submission {
+      padding-top: 1rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: space-between;
+      justify-content: space-between;
+      @include respond(micro) {
+        font-size: 1.5rem;
+      }
+
+      &__info {
+        text-align: center;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+
+  &__chatBox {
+    width: 90%;
+    height: 25%;
+    // overflow: scroll;
+    align-self: center;
+    background-color: white;
+
+    display: flex;
+    flex-flow: column wrap;
+    ul {
+      li {
+        border-bottom: 1px solid black;
+        padding: 1rem;
+      }
+    }
+  }
+  &__chatInput {
+    width: 90%;
+    align-self: center;
+
+    height: 5%;
+
+    &__input {
+      height: 80%;
+      width: 80%;
+      padding-left: 1rem;
+    }
+    &__button {
+      height: 80%;
+      width: 20%;
+    }
+  }
+}

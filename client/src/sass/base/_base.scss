@@ -1,0 +1,48 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px;
+
+  // @include respond(phone){
+  //   font-size: 50%;
+  // }
+  @include respond(tab-land){
+    font-size: 56.25%; //1 rem should be 9 px here == 56.25%
+  }
+  @include respond(tab-port){
+    font-size: 50%; //1rem should be 8 px here = 50%
+  }
+
+  @include respond(big-desktop){
+    font-size: 75%; //1 rem should be 12px, == 75%
+  }
+
+}
+
+/* We convert everything to be rem for ease of editing and scalability.  This rule:
+```
+html {
+    font-size: 62.5%;
+}
+```
+is the base, off which our rem is calculated.  Originally he showed it as setting it as 10px (for ease of calculation).  But because some people want to change the default size of browser font, we dont want to use this method -- it will overwrite what they set.
+
+Therefore: every browser can be assumed to be base of 16px font.  10px is 62.5% of 16.  So if they alter their default value to 24 or 30 or whatever, our calculations are now off of what they have set it to be.   */
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  box-sizing: border-box;
+  // padding: 3rem;
+  line-height: 1.6;
+  font-size: 2rem;
+
+  // background-color: $color-primary-light;
+
+}
+
